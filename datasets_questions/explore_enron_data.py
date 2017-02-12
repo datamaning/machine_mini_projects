@@ -14,9 +14,18 @@
     enron_data["SKILLING JEFFREY K"]["bonus"] = 5600000
     
 """
-
+import pprint
 import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+pprint.pprint(len(enron_data))
+pprint.pprint(len(enron_data["SKILLING JEFFREY K"]))
+num0=1
+for key,value in enron_data.items():
+    if enron_data[key]['poi']==True:
+        num0+=1
+        print key
+print num0
 
+print enron_data['JAMES PRENTICE']['bonus']
