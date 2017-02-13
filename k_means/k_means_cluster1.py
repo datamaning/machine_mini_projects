@@ -59,8 +59,15 @@ poi, finance_features = targetFeatureSplit( data )
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
+max_exercised=0.0000000001
+min_exercised=9999999999
 for f1, f2,f3 in finance_features:
     plt.scatter( f1, f2,f3 )
+    if f1>max_exercised:
+        max_exercised=f1
+    if f1!=0 and f1<min_exercised:
+        min_exercised=f1
+print min_exercised,max_exercised
 plt.show()
 
 ### cluster here; create predictions of the cluster labels
