@@ -9,18 +9,23 @@ from feature_format import featureFormat, targetFeatureSplit
 
 ### read in data dictionary, convert to numpy array
 data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r") )
-features = ["salary", "bonus"]
+features = ["salary", "bonus",]
 data = featureFormat(data_dict, features)
 
 
 ### your code below
-
-from sklearn import linear_model
-
-clf=linear_model.LinearRegression()
-print data
-print data[:,0]
-print len(data[:,0]),len(data[:,1])
-clf.fit(data,[0])
-print clf.coef_
+max2=0
+max1=0
+for point in data:
+    salary=point[0]
+    bonus=point[1]
+    if salary!=26704229:
+        matplotlib.pyplot.scatter(salary,bonus)
+        if int(bonus)>max1:
+            max2=salary
+            max1=bonus
+print max2,max1
+matplotlib.pyplot.xlabel("salary")
+matplotlib.pyplot.ylabel("bonus")
+matplotlib.pyplot.show()
 
