@@ -36,7 +36,11 @@ features_train = features_train[:150].toarray()
 labels_train   = labels_train[:150]
 
 
+from sklearn import DecisionTree
 
+clf=DecisionTree()
+clf.fit(features_train,labels_train)
+print clf.score(features_test,labels_test)
 ### your code goes here
 
 
