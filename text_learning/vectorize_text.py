@@ -7,7 +7,8 @@ import sys
 
 sys.path.append( "../tools/" )
 from parse_out_email_text import parseOutText
-
+from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.corpus import stopwords
 """
     Starter code to process the emails from Sara and Chris to extract
     the features and get the documents ready for classification.
@@ -41,15 +42,15 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
     for path in from_person:
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
-        temp_counter += 1
-        if temp_counter < 200:
+        #temp_counter += 1
+        #if temp_counter < 200:
             path = os.path.join('..', path[:-1])
             #print path
             email = open(path, "r")
 
             ### use parseOutText to extract the text from the opened email
             text=parseOutText(email)
-            stopwords=['sara','shackleton','chris','germani']
+            stopwords=['sara','shackleton','chris','germani','sshacklensf','cgermannsf']
             for word in stopwords:
                 text=text.replace(word,'')
             #print name
@@ -62,9 +63,9 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
 
             ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
             if name=='sara':
-                from_data.append(1)
-            if name=='chris':
                 from_data.append(0)
+            else:
+                from_data.append(1)
             email.close()
 
 print "emails processed"
@@ -80,4 +81,10 @@ pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
 ### in Part 4, do TfIdf vectorization here
 
+vectorizer=TfidfVectorizer(stop_words='english')
+vectorizer.fit(word_data)
+vectorizer.transform(word_data)
 
+feature_words=vectorizer.get_feature_names()
+print 'number of words',len(feature_words)
+print '34957',feature_words[34957]
