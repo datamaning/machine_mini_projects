@@ -67,7 +67,7 @@ def cal_precision_recall(actual=[],predicted=[]):
         else:
             true_negatives+=1
     print 'true_positive',true_positive,'true_negative',true_negatives,'false positives',false_positive,'false_negatives',false_negative
-    print 'precision score',true_positive/(true_positive+false_negative)
-    print 'recall score',true_positive/(true_positive+false_positive)
+    print 'precision score',true_positive*1.0/(true_positive+false_positive)
+    print 'recall score',true_positive*1.0/(true_positive+false_negative)
     
 cal_precision_recall(actual,predicted)
