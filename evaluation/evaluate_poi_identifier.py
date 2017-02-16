@@ -36,6 +36,13 @@ print clf.score(features_test,labels_test)
 values,counts=np.unique(pred,return_counts=True)
 test_size=len(features_test)
 print "predicted of POIDS",zip(values,counts)
+print "test_size",test_size
 ### your code goes here 
+true_positives=0
 
+for actual,predict in zip(labels_test,pred):
+    if actual==1 and predict==1:
+        true_positives+=1
+
+print "true_positives",true_positives
 
