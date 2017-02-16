@@ -45,4 +45,5 @@ for actual,predict in zip(labels_test,pred):
         true_positives+=1
 
 print "true_positives",true_positives
-
+print "precision score",precision_score(pred,labels_test)
+print "recall score",recall_score(pred,labels_test)
