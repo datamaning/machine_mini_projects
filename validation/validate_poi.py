@@ -26,7 +26,11 @@ data = featureFormat(data_dict, features_list)
 labels, features = targetFeatureSplit(data)
 
 
-
+print labels
+print features
 ### it's all yours from here forward!  
-
+from sklearn import tree
+clf=tree.DecisionTreeClassifier()
+clf.fit(features,labels)
+print 'score',clf.score(features,labels)
 
