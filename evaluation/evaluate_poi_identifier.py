@@ -47,3 +47,27 @@ for actual,predict in zip(labels_test,pred):
 print "true_positives",true_positives
 print "precision score",precision_score(pred,labels_test)
 print "recall score",recall_score(pred,labels_test)
+
+predicted=[0,1,1,0,0,0,1,0,1,0,0,1,0,0,1,1,0,1,0,1]
+actual   =[0,0,0,0,0,0,1,0,1,1,0,1,0,1,1,1,0,1,0,0]
+
+def cal_precision_recall(actual=[],predicted=[]):
+    
+    true_positive=0
+    false_positive=0
+    false_negative=0
+    true_negatives=0
+    for a,p in zip(actual,predicted):
+        if a==1 and p==1:
+            true_positive+=1
+        elif a==0 and p==1:
+            false_positive+=1
+        elif a==1 and p==0:
+            false_negative+=1
+        else:
+            true_negatives+=1
+    print 'true_positive',true_positive,'true_negative',true_negatives,'false positives',false_positive,'false_negatives',false_negative
+    print 'precision score',true_positive/(true_positive+false_negative)
+    print 'recall score',true_positive/(true_positive+false_positive)
+    
+cal_precision_recall(actual,predicted)
