@@ -28,7 +28,7 @@ labels, features = targetFeatureSplit(data)
 
 ### it's all yours from here forward!  
 from sklearn import tree
-from skelarn import cross_validation
+from sklearn import cross_validation
 
 features_train,features_test,labels_train,labels_test=cross_validation.train_test_split(features, labels, random_state=42, test_size=0.3)
 
