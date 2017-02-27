@@ -1,4 +1,7 @@
 #!/usr/bin/python
+from __future__ import division
+import pprint
+import matplotlib.pyplot as plt
 
 import sys
 import pickle
@@ -15,7 +18,11 @@ features_list = ['poi','salary'] # You will need to use more features
 ### Load the dictionary containing the dataset
 with open("final_project_dataset.pkl", "r") as data_file:
     data_dict = pickle.load(data_file)
+# Remove outliers that were identified in previous iterations
+identified_outliers=["TOTAL","LAVORATO JOHN J","MARTIN AMANDA K","URQUHART JOHN A","MCCLELLAN GEORGE","SHANKMAN JEFFREY A","WHITE JR THOMAS E","PAI LOU L","HIRKO JOSEPH"]
 
+for outlier in identified_outliers:
+    data_dict.pop(outlier)
 ### Task 2: Remove outliers
 ### Task 3: Create new feature(s)
 ### Store to my_dataset for easy export below.
