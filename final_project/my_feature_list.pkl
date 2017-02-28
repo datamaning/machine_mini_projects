@@ -1,6 +1,10 @@
 (lp0
 S'poi'
 p1
-aS'salary'
+aS'fraction_from_poi_email'
 p2
+aS'fraction_to_poi_email'
+p3
+aS'deferral_payments'
+p4
 a.
